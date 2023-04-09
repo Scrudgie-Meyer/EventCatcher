@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--<Shell
+    x:Class="EventCatcher.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:EventCatcher"
+    Shell.FlyoutBehavior="Disabled">
+
+    <Shell.ToolbarItems VerticalOptions="EndAndExpand">
+        <ToolbarItem Text="PopularEvents"/>
+        <ToolbarItem Text=" CreateEvent" />
+        <ToolbarItem Text=" JoinEvent" />
+        <ToolbarItem Text="Profile" />
+    </Shell.ToolbarItems>
+    
+    
+    <ShellContent
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+</Shell>-->
+<Shell
+    x:Class="EventCatcher.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:EventCatcher">
+
+    <TabBar>
+        <Tab Title="Home">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" 
+                          Icon="Home.png"/>
+            <ShellContent ContentTemplate="{DataTemplate local:EventCreator}" 
+                          Icon="Create.png"/>
+        </Tab>
+             
+    </TabBar>
+
+</Shell>

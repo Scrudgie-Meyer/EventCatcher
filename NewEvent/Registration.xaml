@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewEvent.Registration"
+             Title="Registration"
+             BackgroundColor="Black">
+
+    <StackLayout VerticalOptions="StartAndExpand">
+        <Button Text="Return back" TextColor="White" Clicked="OnReturnClicked"/>
+        <Label Text="  E-mail" TextColor="White"   />
+        <Entry x:Name="Email" TextColor="White"  />
+        <Label Text="  Nickname" TextColor="White" />
+        <Entry x:Name="Nickname" TextColor="White"  />
+        <Label Text="  Password" TextColor="White" />
+        <Entry x:Name="Password" TextColor="White" IsPassword="True" />
+        <Label Text="  Dublicate password" TextColor="White" />
+        <Entry x:Name="DubPassword" TextColor="White" IsPassword="True" />
+        <Button Text="Submit" TextColor="White" Clicked="OnSubmitClicked"/>
+    </StackLayout>
+</ContentPage>

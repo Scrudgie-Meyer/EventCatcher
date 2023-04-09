@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewEvent.EventCreator"
+             Title="EventCreator"
+             BackgroundColor="Black">
+    <StackLayout VerticalOptions="StartAndExpand">
+        <Label Text="  Name your event" TextColor="White" />
+        <Entry x:Name="Name"  TextColor="White"  />
+        
+        <Label Text="  Choose date of your event" TextColor="White" />
+        <DatePicker x:Name="Date" 
+            Format="yyyy-MM-dd" 
+            Date="{Binding MyDate}"  />
+
+        <Label Text="  Choose location of your event" TextColor="White" />
+        <Entry x:Name="Location"  TextColor="White"  />
+        
+        <Label Text="  Describe your event" TextColor="White" />
+        <Entry x:Name="Description"  TextColor="White"  />
+
+        <Label Text="  Set your event private" TextColor="White" />
+        <Button x:Name="PrivatePress" Text="Public" TextColor="White" Clicked="OnPrivacyClicked"/>
+
+        <Button Text="Create" TextColor="White" Clicked="OnCreateClicked"/>
+    </StackLayout>
+</ContentPage>

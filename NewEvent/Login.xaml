@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewEvent.Login"
+             Title="Login"
+             BackgroundColor="Black">
+
+    <StackLayout VerticalOptions="StartAndExpand">
+        <Label Text="  Email" TextColor="White" />
+        <Entry x:Name="Email"  TextColor="White"  />
+        <Label Text="  Password" TextColor="White" />
+        <Entry x:Name="Password" TextColor="White" IsPassword="True" />
+        <Button Text="Submit" TextColor="White" Clicked="OnSubmitClicked"/>
+        <Button Text="Register" TextColor="White" Clicked="OnRegisterClicked" VerticalOptions="End" BackgroundColor="#04433D"/>
+    </StackLayout>
+</ContentPage>
