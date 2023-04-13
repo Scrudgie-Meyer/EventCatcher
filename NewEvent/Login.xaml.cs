@@ -1,4 +1,5 @@
 using MySql.Data.MySqlClient;
+using NewEvent.Support;
 
 namespace NewEvent;
 
@@ -7,6 +8,7 @@ public partial class Login : ContentPage
 	public Login()
 	{
 		InitializeComponent();
+
 	}
 
     private async void OnSubmitClicked(object sender, EventArgs e)
@@ -22,7 +24,9 @@ public partial class Login : ContentPage
         //Пошук значення
         MySqlCommand command = new MySqlCommand($"SELECT * FROM Users WHERE Email = @Email AND Password = @Password", connection);
         command.Parameters.AddWithValue("@Email", Email.Text);
-        command.Parameters.AddWithValue("@Password", Password.Text);
+
+        string pass = CustomHash.HashPassword(Password.Text);
+        command.Parameters.AddWithValue("@Password", pass);
 
         
         User user = new User();
@@ -37,13 +41,13 @@ public partial class Login : ContentPage
             }
         }
         
-        if (Email.Text == user.Email && Password.Text == user.Password)
+        if (Email.Text == user.Email && pass == user.Password)
         {
             await Navigation.PushModalAsync(new AppShell());
             Navigation.RemovePage(this);
-        } 
+        }
+        else await DisplayAlert("Помилка", "Внесено некоретнi данi!", "OK");
 
-        Email.Text = "Внесено неправильнi данi!";
     }
     private async void OnRegisterClicked(object sender, EventArgs e)
     {

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
              x:Class="NewEvent.EventCreator"
              Title="EventCreator"
              BackgroundColor="Black">
@@ -14,7 +16,7 @@
             Date="{Binding MyDate}"  />
 
         <Label Text="  Choose location of your event" TextColor="White" />
-        <Entry x:Name="Location"  TextColor="White"  />
+        <maps:Map x:Name="map" MapType="Street" IsScrollEnabled="True" IsZoomEnabled="True" />
         
         <Label Text="  Describe your event" TextColor="White" />
         <Entry x:Name="Description"  TextColor="White"  />

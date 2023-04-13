@@ -1,6 +1,7 @@
 using Microsoft.Maui.ApplicationModel.Communication;
 using MySql.Data.MySqlClient;
-using System.Configuration;
+using NewEvent.Support;
+
 namespace NewEvent;
 
 public partial class Registration : ContentPage
@@ -23,22 +24,28 @@ public partial class Registration : ContentPage
         {
             connection.Open();
         }
+        
 
         //Перевірка на відповідність паролю
-        if(Password.Text==DubPassword.Text) 
+        if (Password.Text==DubPassword.Text && Password.Text.Length>=8 && RegistrationResources.IsEmailValid(Email.Text)) 
         {
             //Збереження даних
             MySqlCommand command = new MySqlCommand($"INSERT INTO Users (Email, Nickname, Password) VALUES (@Email, @Nickname, @Password)", connection);
+
             command.Parameters.AddWithValue("@Email", Email.Text);
             command.Parameters.AddWithValue("@Nickname", Nickname.Text);
-            command.Parameters.AddWithValue("@Password", Password.Text);
+
+            //Хешування
+            string pass = CustomHash.HashPassword(Password.Text);
+            command.Parameters.AddWithValue("@Password", pass);
+
             command.ExecuteNonQuery();
 
             //Повернутися на сторінку логіна
             await Navigation.PushModalAsync(new Login());
             Navigation.RemovePage(this);
         }
+        else await DisplayAlert("Помилка", "Внесено некоретнi данi!", "OK");
 
-        Password.Text = "Внесiть пароль повторно!";
     }
 }

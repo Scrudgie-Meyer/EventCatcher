@@ -8,11 +8,11 @@
 
     <TabBar>
         <Tab>
-            <ShellContent Title="" ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent Title="" ContentTemplate="{DataTemplate local:MainPage} " />
             <ShellContent Title="" ContentTemplate="{DataTemplate local:EventCreator}" />
             <ShellContent Title="" ContentTemplate="{DataTemplate local:JoinEvent}" />
             <ShellContent Title="" ContentTemplate="{DataTemplate local:Profile}" />
         </Tab>
-
     </TabBar>
+    
 </Shell>

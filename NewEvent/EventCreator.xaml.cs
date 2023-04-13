@@ -1,15 +1,41 @@
 using MySql.Data.MySqlClient;
 using NewEvent.Support;
+using Microsoft.Maui.Controls.Maps;
+using Microsoft.Maui.Maps;
 
 namespace NewEvent;
 
 public partial class EventCreator : ContentPage
 {
     private bool IsPrivate = false; 
+    private string locationToSQL;
 	public EventCreator()
 	{
 		InitializeComponent();
-	}
+        map.GestureRecognizers.Clear();
+        
+        var location = new Location(50.4501, 30.5234);
+
+        var mapSpan = MapSpan.FromCenterAndRadius(location, Distance.FromKilometers(3));
+        map.MoveToRegion(mapSpan);
+
+        // Додаємо обробник події для натискання на карту
+        map.MapClicked += (sender, e) =>
+        {
+            // Встановлюємо пін на карту
+            var pin = new Pin
+            {
+                Type = PinType.Generic,
+                Location = e.Location,
+                Label="Event location"
+            };
+            Point point= new Point(e.Location.Longitude, e.Location.Latitude);
+            locationToSQL =Convert.ToString(point);
+            map.Pins.Clear();
+
+            map.Pins.Add(pin);
+        };
+    }
     private void OnPrivacyClicked(object sender, EventArgs e)
     {
         if(IsPrivate==false) 
@@ -37,7 +63,7 @@ public partial class EventCreator : ContentPage
         MySqlCommand command = new MySqlCommand($"INSERT INTO Events (Name, Date, Location, Description, IsPrivate) VALUES (@Name, @Date, @Location, @Description, @IsPrivate)", connection);
         command.Parameters.AddWithValue("@Name", Name.Text);
         command.Parameters.AddWithValue("@Date", Date.Date);
-        //command.Parameters.AddWithValue("@Location", );
+        command.Parameters.AddWithValue("@Location",locationToSQL);
         command.Parameters.AddWithValue("@Description", Description.Text);
         command.Parameters.AddWithValue("@IsPrivate", IsPrivate);
         command.ExecuteNonQuery();
