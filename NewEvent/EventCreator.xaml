@@ -6,24 +6,24 @@
              x:Class="NewEvent.EventCreator"
              Title="EventCreator"
              BackgroundColor="Black">
-    <StackLayout VerticalOptions="StartAndExpand">
-        <Label Text="  Name your event" TextColor="White" />
-        <Entry x:Name="Name"  TextColor="White"  />
-        
-        <Label Text="  Choose date of your event" TextColor="White" />
+    <StackLayout VerticalOptions="StartAndExpand" Margin="20">
+        <Label Text="Name your event" TextColor="White" FontSize="Medium" />
+        <Entry x:Name="Name"  TextColor="White" BackgroundColor="#FF025C48" FontSize="Medium"  />
+
+        <Label Text="Choose date of your event" TextColor="White" FontSize="Medium" Margin="0, 5, 0, 0" />
         <DatePicker x:Name="Date" 
-            Format="yyyy-MM-dd" 
-            Date="{Binding MyDate}"  />
+        Format="yyyy-MM-dd" 
+        Date="{Binding MyDate}"  BackgroundColor="#FF025C48"  />
 
-        <Label Text="  Choose location of your event" TextColor="White" />
-        <maps:Map x:Name="map" MapType="Street" IsScrollEnabled="True" IsZoomEnabled="True" />
-        
-        <Label Text="  Describe your event" TextColor="White" />
-        <Entry x:Name="Description"  TextColor="White"  />
+        <Label Text="Choose location of your event" TextColor="White" FontSize="Medium"  Margin="0, 5, 0, 0"/>
+        <maps:Map x:Name="map" MapType="Street" IsScrollEnabled="True" IsZoomEnabled="True" Margin="0, 5, 0, 0" VerticalOptions="FillAndExpand" />
 
-        <Label Text="  Set your event private" TextColor="White" />
-        <Button x:Name="PrivatePress" Text="Public" TextColor="White" Clicked="OnPrivacyClicked"/>
+        <Label Text="Describe your event" TextColor="White" FontSize="Medium"  Margin="0, 5, 0, 0"/>
+        <Entry x:Name="Description"  TextColor="White" BackgroundColor="#FF025C48" FontSize="Medium"  />
 
-        <Button Text="Create" TextColor="White" Clicked="OnCreateClicked"/>
+        <Label Text="Set your event private" TextColor="White" FontSize="Medium"  Margin="0, 5, 0, 0"/>
+        <Button x:Name="PrivatePress" Text="Public" TextColor="White" Clicked="OnPrivacyClicked" BackgroundColor="#023402" CornerRadius="8" Margin="0, 5, 0, 0"/>
+
+        <Button Text="Create" TextColor="White" Clicked="OnCreateClicked" BackgroundColor="#023402" CornerRadius="8" FontSize="Large" Margin="0, 5, 0, 0"/>
     </StackLayout>
 </ContentPage>

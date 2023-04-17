@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewEvent.Login"
              Title="Login"
-             BackgroundColor="Black">
+             BackgroundColor="#000000">
 
-    <StackLayout VerticalOptions="StartAndExpand">
-        <Label Text="  Email" TextColor="White" />
-        <Entry x:Name="Email"  TextColor="White"  />
-        <Label Text="  Password" TextColor="White" />
-        <Entry x:Name="Password" TextColor="White" IsPassword="True" />
-        <Button Text="Submit" TextColor="White" Clicked="OnSubmitClicked"/>
-        <Button Text="Register" TextColor="White" Clicked="OnRegisterClicked" VerticalOptions="End" BackgroundColor="#04433D"/>
+    <StackLayout VerticalOptions="StartAndExpand" Margin="20">
+        <Label Text="Email" TextColor="#FFFFFF" FontSize="Large" />
+        <Entry x:Name="Email" TextColor="#FFFFFF" BackgroundColor="#FF025C48" FontSize="Large" />
+        <Label Text="Password" TextColor="#FFFFFF" FontSize="Large" />
+        <Entry x:Name="Password" TextColor="#FFFFFF" IsPassword="True" BackgroundColor="#FF025C48" FontSize="Large" />
+        <Button Text="Submit" TextColor="#FFFFFF" Clicked="OnSubmitClicked" BackgroundColor="#003F00" CornerRadius="8" FontSize="Large" Margin="0, 30, 0, 0" />
+        <Button Text="Register" TextColor="#FFFFFF" Clicked="OnRegisterClicked" VerticalOptions="End" BackgroundColor="#023402" FontSize="Large" CornerRadius="8" Margin="0, 10, 0, 0"/>
     </StackLayout>
 </ContentPage>

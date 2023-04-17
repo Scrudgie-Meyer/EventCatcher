@@ -13,7 +13,6 @@ namespace NewEvent
 
             MainPage = new Login();
             
- 
         }
 
     }

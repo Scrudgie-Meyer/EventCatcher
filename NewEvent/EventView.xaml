@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewEvent.EventView"
+             Title="EventView"
+             BackgroundColor="Black">
+
+    <VerticalStackLayout VerticalOptions="StartAndExpand" Margin="20">
+        <Button Text="Return" TextColor="White" Clicked="OnReturnClicked" BackgroundColor="#023402" CornerRadius="8"/>
+        <Label Text="Name of the event" TextColor="White" FontSize="Medium" Margin="0, 5, 0, 0" />
+        <Label x:Name="Name" Text="" TextColor="White" FontSize="Medium"  BackgroundColor="#FF025C48" />
+
+        <Label Text="Date of the event" TextColor="White" FontSize="Medium"  Margin="0, 5, 0, 0"/>
+        <Label  x:Name="Date" Text="" TextColor="White" FontSize="Medium" BackgroundColor="#FF025C48" />
+
+        <Label Text="Location of the event" TextColor="White" FontSize="Medium"  Margin="0, 5, 0, 0"/>
+        <maps:Map x:Name="map" MapType="Street" IsScrollEnabled="True" IsZoomEnabled="True" Margin="0, 5, 0, 0" VerticalOptions="FillAndExpand" HeightRequest="250" BackgroundColor="#FF025C48" />
+
+        <Label Text="Description of the event" TextColor="White" FontSize="Medium"  Margin="0, 5, 0, 0"/>
+        <Label x:Name="Description" Text="" TextColor="White" FontSize="Medium" BackgroundColor="#FF025C48" />
+        <Label x:Name="OrganisatorData"  TextColor="White" BackgroundColor="#FF025C48" FontSize="Medium"  Margin="0, 5, 0, 0"/>
+        <Label x:Name="UniqueCode"  TextColor="White" BackgroundColor="#FF025C48" FontSize="Medium"  Margin="0, 5, 0, 0"/>
+
+        <Button Text="Search" TextColor="White" Clicked="OnJoinClicked" BackgroundColor="#023402" CornerRadius="8" FontSize="Large" Margin="0, 5, 0, 0"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewEvent.EventManager"
+             Title="EventManager"
+             BackgroundColor="Black">
+    <ScrollView>
+        <StackLayout VerticalOptions="StartAndExpand" Margin="20">
+            <Button Text="Return" TextColor="White" Clicked="OnReturnClicked" BackgroundColor="#023402" CornerRadius="8"/>
+            <Label Text="Name your event" TextColor="White" FontSize="Medium" />
+            <Entry x:Name="Name"  TextColor="White" BackgroundColor="#FF025C48" FontSize="Medium"  />
+
+            <Label Text="Choose date of your event" TextColor="White" FontSize="Medium" Margin="0, 5, 0, 0" />
+            <DatePicker x:Name="Date" 
+            Format="yyyy-MM-dd" 
+            Date="{Binding MyDate}"  BackgroundColor="#FF025C48"  />
+
+            <Label Text="Choose location of your event" TextColor="White" FontSize="Medium"  Margin="0, 5, 0, 0"/>
+            <maps:Map x:Name="map" MapType="Street" IsScrollEnabled="True" IsZoomEnabled="True" Margin="0, 5, 0, 0" VerticalOptions="FillAndExpand" HeightRequest="250"/>
+
+            <Label Text="Describe your event" TextColor="White" FontSize="Medium"  Margin="0, 5, 0, 0"/>
+            <Entry x:Name="Description"  TextColor="White" BackgroundColor="#FF025C48" FontSize="Medium"  />
+            <Label x:Name="UniqueCode" Text="Event UniqueCode" TextColor="White" BackgroundColor="#FF025C48" FontSize="Medium"  Margin="0, 5, 0, 0"/>
+
+            <Button x:Name="PrivatePress" Text="Public" TextColor="White" Clicked="OnPrivacyClicked" BackgroundColor="#023402" CornerRadius="8" Margin="0, 5, 0, 0"/>
+
+            <Button Text="Save changes" TextColor="White" Clicked="OnSaveClicked" BackgroundColor="#023402" CornerRadius="8" FontSize="Large" Margin="0, 5, 0, 0"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

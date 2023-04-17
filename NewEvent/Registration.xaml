@@ -5,16 +5,20 @@
              Title="Registration"
              BackgroundColor="Black">
 
-    <StackLayout VerticalOptions="StartAndExpand">
-        <Button Text="Return back" TextColor="White" Clicked="OnReturnClicked"/>
-        <Label Text="  E-mail" TextColor="White"   />
-        <Entry x:Name="Email" TextColor="White"  />
-        <Label Text="  Nickname" TextColor="White" />
-        <Entry x:Name="Nickname" TextColor="White"  />
-        <Label Text="  Password" TextColor="White" />
-        <Entry x:Name="Password" TextColor="White" IsPassword="True" />
-        <Label Text="  Dublicate password" TextColor="White" />
-        <Entry x:Name="DubPassword" TextColor="White" IsPassword="True" />
-        <Button Text="Submit" TextColor="White" Clicked="OnSubmitClicked"/>
+    <StackLayout VerticalOptions="StartAndExpand" Margin="20">
+        <Button Text="Return back" TextColor="White" Clicked="OnReturnClicked" BackgroundColor="#023402" CornerRadius="8" />
+        <Label Text="E-mail" TextColor="White" FontSize="Large" />
+        <Entry x:Name="Email" TextColor="White" BackgroundColor="#FF025C48" FontSize="Large" Margin="0, 10, 0, 0" />
+        <Label Text="Nickname" TextColor="White" FontSize="Large" Margin="0, 10, 0, 0" />
+        <Entry x:Name="Nickname" TextColor="White" BackgroundColor="#FF025C48" FontSize="Large" Margin="0, 10, 0, 0" />
+        <Label Text="Password" TextColor="White" FontSize="Large" Margin="0, 10, 0, 0" />
+        <Entry x:Name="Password" TextColor="White" IsPassword="True" BackgroundColor="#FF025C48" FontSize="Large" Margin="0, 10, 0, 0" />
+        <Label Text="Duplicate password" TextColor="White" FontSize="Large" Margin="0, 10, 0, 0" />
+        <Entry x:Name="DubPassword" TextColor="White" IsPassword="True" BackgroundColor="#05A27F" FontSize="Large" Margin="0, 10, 0, 0" />
+        <Button Text="Submit" TextColor="White" Clicked="OnSubmitClicked" BackgroundColor="#023402" CornerRadius="8" FontSize="Large" Margin="0, 30, 0, 0" />
     </StackLayout>
 </ContentPage>
+
+
+
+

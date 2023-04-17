@@ -4,10 +4,11 @@
              x:Class="NewEvent.JoinEvent"
              Title="JoinEvent"
              BackgroundColor="Black">
-    
-    <StackLayout VerticalOptions="StartAndExpand">
-        <Label Text="Join event" TextColor="White" />
 
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <Label Text="Join Event" FontSize="Large" TextColor="White" />
+        <Entry x:Name="Pass" Placeholder="Enter UniqueCode" TextColor="White" PlaceholderColor="Gray" BackgroundColor="#FF025C48" FontSize="Large" Margin="0, 10, 0, 0"/>
+        <Button Text="Join" TextColor="White" BackgroundColor="#023402" FontSize="Large" Margin="0, 30, 0, 0" Clicked="OnJoinClicked"/>
     </StackLayout>
-    
+
 </ContentPage>

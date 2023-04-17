@@ -4,26 +4,5 @@
              x:Class="NewEvent.MainPage"
              BackgroundColor="Black">
 
-    <StackLayout VerticalOptions="StartAndExpand">
-        <Label Text="Popular Events" TextColor="White" />
-        <Button 
-            BackgroundColor="Black"
-            Text="Button 1" />
-        <Button 
-            BackgroundColor="Black"
-            Text="Button 2" />
-        <Button 
-            BackgroundColor="Black"
-            Text="Button 3" />
-        <Button 
-            BackgroundColor="Black"
-            Text="Button 4" />
-        <Button 
-            BackgroundColor="Black"
-            Text="Button 5" />
-        <Button 
-            BackgroundColor="Black"
-            Text="Button 6" />
-    </StackLayout>
 
 </ContentPage>

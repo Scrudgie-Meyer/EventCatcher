@@ -27,7 +27,11 @@ public partial class Registration : ContentPage
         
 
         //Перевірка на відповідність паролю
-        if (Password.Text==DubPassword.Text && Password.Text.Length>=8 && RegistrationResources.IsEmailValid(Email.Text)) 
+        if(Email.Text==null||Password.Text==null||DubPassword.Text==null)
+        {
+            await DisplayAlert("Помилка", "Заповність усі поля!", "OK");
+        }
+        else if (Password.Text==DubPassword.Text && Password.Text.Length>=8 && RegistrationResources.IsEmailValid(Email.Text)) 
         {
             //Збереження даних
             MySqlCommand command = new MySqlCommand($"INSERT INTO Users (Email, Nickname, Password) VALUES (@Email, @Nickname, @Password)", connection);

@@ -5,8 +5,4 @@
              Title="Profile"
              BackgroundColor="Black">
 
-    <StackLayout VerticalOptions="StartAndExpand">
-        <Label Text="Your profile" TextColor="White" />
-
-    </StackLayout>
 </ContentPage>
