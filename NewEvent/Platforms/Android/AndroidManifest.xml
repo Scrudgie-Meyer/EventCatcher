@@ -2,11 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 	<application 
 		android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true">
-		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAJakmUmlM-b1_LfyWv0Y78xV9GQOxPqEM"/>
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAJakmUmlYourKEY"/>
 		
 		<meta-data
 			android:name="com.google.android.maps.­v2.API_KEY"
-			android:value="AIzaSyAJakmUmlM-b1_LfyWv0Y78xV9GQOxPqEM"/>
+			android:value="YourKEY"/>
 
 		<meta-data
 			android:name="com.google.android.maps.v2.default_location"
