@@ -12,17 +12,17 @@
 
 
     <TabBar>
-        <Tab Title="Popular events" Icon="home.png">
+        <Tab Title="Popular" Icon="home.png" Shell.NavBarIsVisible="True">
             <ShellContent  ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
-        <Tab Title="Create your event" Icon="create.png">
+        <Tab Title="Create" Icon="create.png">
             <ShellContent  ContentTemplate="{DataTemplate local:EventCreator}" />
         </Tab>
-        <Tab Title="Join Event" Icon="join.png">
+        <Tab Title="Join Event" Icon="join.png"  >
             <ShellContent  ContentTemplate="{DataTemplate local:JoinEvent}" />
         </Tab>
-        <Tab Title="Profile" Icon="profile.png">
-            <ShellContent  ContentTemplate="{DataTemplate local:Profile}" />
+        <Tab Title="Profile" Icon="profile.png" >
+            <ShellContent ContentTemplate="{DataTemplate local:Profile}"/>
         </Tab>
     </TabBar>
 

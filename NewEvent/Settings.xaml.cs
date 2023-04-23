@@ -24,13 +24,8 @@ public partial class Settings : ContentPage
     private async void OnSaveClicked(object sender, EventArgs e)
     {
         //З'єднання з базою даних
-        string Conn = "Server=sql7.freemysqlhosting.net;Port=3306;Database=sql7611982;Uid=sql7611982;Pwd=Aegl446cFD;";
-        MySqlConnection connection = new MySqlConnection(Conn);
-        if (connection.State == System.Data.ConnectionState.Closed)
-        {
-            connection.Open();
-        }
-        if(ChangeNickname.Text==user.Nickname&&OldPassword.Text!=null&&NewPassword.Text!=null)
+        MySqlConnection connection = CustomSQL.Connection();
+        if (ChangeNickname.Text==user.Nickname&&OldPassword.Text!=null&&NewPassword.Text!=null)
         {
 
             //Пошук значення

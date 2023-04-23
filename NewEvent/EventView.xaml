@@ -4,24 +4,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewEvent.EventView"
              Title="EventView"
-             BackgroundColor="Black">
+             BackgroundColor="LightCyan">
+
 
     <VerticalStackLayout VerticalOptions="StartAndExpand" Margin="20">
-        <Button Text="Return" TextColor="White" Clicked="OnReturnClicked" BackgroundColor="#023402" CornerRadius="8"/>
-        <Label Text="Name of the event" TextColor="White" FontSize="Medium" Margin="0, 5, 0, 0" />
-        <Label x:Name="Name" Text="" TextColor="White" FontSize="Medium"  BackgroundColor="#FF025C48" />
+        <Button Text="Return" TextColor="White" Clicked="OnReturnClicked" BackgroundColor="#FF05A27F" CornerRadius="8" />
+        <Label x:Name="Name" Text="" TextColor="Black" FontSize="Large" FontAttributes="Bold" Margin="0, 10, 0, 0"/>
 
-        <Label Text="Date of the event" TextColor="White" FontSize="Medium"  Margin="0, 5, 0, 0"/>
-        <Label  x:Name="Date" Text="" TextColor="White" FontSize="Medium" BackgroundColor="#FF025C48" />
+        <Label  x:Name="Date" Text="" TextColor="Black" FontSize="Medium"   Margin="0, 10, 0, 0" FontAttributes="Bold"/>
 
-        <Label Text="Location of the event" TextColor="White" FontSize="Medium"  Margin="0, 5, 0, 0"/>
-        <maps:Map x:Name="map" MapType="Street" IsScrollEnabled="True" IsZoomEnabled="True" Margin="0, 5, 0, 0" VerticalOptions="FillAndExpand" HeightRequest="250" BackgroundColor="#FF025C48" />
+        <maps:Map x:Name="map" MapType="Street" IsScrollEnabled="True" IsZoomEnabled="True" Margin="0, 10, 0, 0" VerticalOptions="FillAndExpand" HeightRequest="250"  />
 
-        <Label Text="Description of the event" TextColor="White" FontSize="Medium"  Margin="0, 5, 0, 0"/>
-        <Label x:Name="Description" Text="" TextColor="White" FontSize="Medium" BackgroundColor="#FF025C48" />
-        <Label x:Name="OrganisatorData"  TextColor="White" BackgroundColor="#FF025C48" FontSize="Medium"  Margin="0, 5, 0, 0"/>
-        <Label x:Name="UniqueCode"  TextColor="White" BackgroundColor="#FF025C48" FontSize="Medium"  Margin="0, 5, 0, 0"/>
+        <Label x:Name="Description" Text="" TextColor="Black" FontSize="Medium"  FontAttributes="Bold"/>
+        <Label x:Name="OrganisatorData"  TextColor="Black"  FontSize="Medium"  Margin="0, 10, 0, 0" FontAttributes="Bold"/>
+        <Label x:Name="UniqueCode"  TextColor="Black"  FontSize="Medium"  Margin="0, 10, 0, 0" FontAttributes="Bold"/>
 
-        <Button Text="Search" TextColor="White" Clicked="OnJoinClicked" BackgroundColor="#023402" CornerRadius="8" FontSize="Large" Margin="0, 5, 0, 0"/>
+        <Label x:Name="Participants"  TextColor="Black"  FontSize="Medium"  Margin="0, 10, 0, 0" FontAttributes="Bold" />
+        <Button x:Name="Join"   Text="Join" TextColor="White" Clicked="OnJoinClicked" BackgroundColor="#FF05A27F" CornerRadius="8" FontSize="Large" Margin="0, 20, 0, 0"/>
+
     </VerticalStackLayout>
 </ContentPage>

@@ -3,14 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewEvent.Login"
              Title="Login"
-             BackgroundColor="#000000">
+             BackgroundColor="LightCyan">
 
     <StackLayout VerticalOptions="StartAndExpand" Margin="20">
-        <Label Text="Email" TextColor="#FFFFFF" FontSize="Large" />
-        <Entry x:Name="Email" TextColor="#FFFFFF" BackgroundColor="#FF025C48" FontSize="Large" />
-        <Label Text="Password" TextColor="#FFFFFF" FontSize="Large" />
-        <Entry x:Name="Password" TextColor="#FFFFFF" IsPassword="True" BackgroundColor="#FF025C48" FontSize="Large" />
-        <Button Text="Submit" TextColor="#FFFFFF" Clicked="OnSubmitClicked" BackgroundColor="#003F00" CornerRadius="8" FontSize="Large" Margin="0, 30, 0, 0" />
-        <Button Text="Register" TextColor="#FFFFFF" Clicked="OnRegisterClicked" VerticalOptions="End" BackgroundColor="#023402" FontSize="Large" CornerRadius="8" Margin="0, 10, 0, 0"/>
+        <Entry x:Name="Email" TextColor="#FFFFFF" BackgroundColor="#FF05A27F" FontSize="Large" Placeholder="Email" PlaceholderColor="LightGray" Margin="0, 30, 0, 0"/>
+        <Entry x:Name="Password" TextColor="#FFFFFF" IsPassword="True" BackgroundColor="#FF05A27F" FontSize="Large" Placeholder="Password" PlaceholderColor="LightGray" Margin="0, 30, 0, 0"/>
+        <Button Text="Submit" TextColor="#FFFFFF" Clicked="OnSubmitClicked" BackgroundColor="#FF05A27F" CornerRadius="8" FontSize="Large" Margin="0, 30, 0, 0" />
+        <Button Text="Register" TextColor="#FFFFFF" Clicked="OnRegisterClicked" VerticalOptions="End" BackgroundColor="#FF05A27F" FontSize="Large" CornerRadius="8" Margin="0, 10, 0, 0"/>
     </StackLayout>
 </ContentPage>

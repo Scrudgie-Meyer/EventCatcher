@@ -57,26 +57,27 @@ public partial class EventCreator : ContentPage
     private async void OnCreateClicked(object sender, EventArgs e)
     {
         //З'єднання з базою даних
-        string Conn = "Server=sql7.freemysqlhosting.net;Port=3306;Database=sql7611982;Uid=sql7611982;Pwd=Aegl446cFD;";
-        MySqlConnection connection = new MySqlConnection(Conn);
-        if (connection.State == System.Data.ConnectionState.Closed)
-        {
-            connection.Open();
-        }
+        MySqlConnection connection=CustomSQL.Connection();
         if (Name.Text == null || locationToSQL == null || Description.Text==null)
         {
-            await DisplayAlert("Помилка", "Заповність усі поля!", "OK");
+            await DisplayAlert("Error", "Fill all fields!", "OK");
         }
-        string uniqueCode = Guid.NewGuid().ToString().Substring(0, 8);
-        //Збереження даних
-        MySqlCommand command = new MySqlCommand($"INSERT INTO Events (Name, Date, Location, Description, IsPrivate, Email, UniqueCode) VALUES (@Name, @Date, @Location, @Description, @IsPrivate, @Email, @UniqueCode)", connection);
-        command.Parameters.AddWithValue("@Name", Name.Text);
-        command.Parameters.AddWithValue("@Date", Date.Date);
-        command.Parameters.AddWithValue("@Location",locationToSQL);
-        command.Parameters.AddWithValue("@Description", Description.Text);
-        command.Parameters.AddWithValue("@IsPrivate", IsPrivate);
-        command.Parameters.AddWithValue("@Email", user.Email);
-        command.Parameters.AddWithValue("@UniqueCode", uniqueCode);
-        command.ExecuteNonQuery();
+        else 
+        {
+            string uniqueCode = Guid.NewGuid().ToString().Substring(0, 8);
+            //Збереження даних
+            MySqlCommand command = new MySqlCommand($"INSERT INTO Events (Name, Date, Location, Description, IsPrivate, Email, UniqueCode, Participants) VALUES (@Name, @Date, @Location, @Description, @IsPrivate, @Email, @UniqueCode, @Participants)", connection);
+            command.Parameters.AddWithValue("@Name", Name.Text);
+            command.Parameters.AddWithValue("@Date", Date.Date);
+            command.Parameters.AddWithValue("@Location", locationToSQL);
+            command.Parameters.AddWithValue("@Description", Description.Text);
+            command.Parameters.AddWithValue("@IsPrivate", IsPrivate);
+            command.Parameters.AddWithValue("@Email", user.Email);
+            command.Parameters.AddWithValue("@UniqueCode", uniqueCode);
+            command.Parameters.AddWithValue("@Participants", user.Email);
+
+            command.ExecuteNonQuery();
+        }
+        
     }
 }

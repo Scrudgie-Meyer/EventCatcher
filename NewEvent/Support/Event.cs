@@ -16,5 +16,6 @@ namespace NewEvent.Support
         public bool IsPrivate { get; set; }
         public string Email { get; set; }
         public string UniqueCode { get; set; }
+        public string Participants { get; set; }
     }
 }

@@ -3,6 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewEvent.Profile"
              Title="Profile"
-             BackgroundColor="Black">
+             BackgroundColor="LightCyan">
 
 </ContentPage>

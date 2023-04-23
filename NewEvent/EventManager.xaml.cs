@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 using MySql.Data.MySqlClient;
@@ -9,8 +10,8 @@ namespace NewEvent;
 
 public partial class EventManager : ContentPage
 {
-    private Event ewent=null;
-    private User user=null;
+    private Event ewent=new Event();
+    private User user=new User();
     private bool IsPrivate = false;
     private string locationToSQL;
     public EventManager(Event ewent, User user)
@@ -19,6 +20,7 @@ public partial class EventManager : ContentPage
 
         this.ewent = ewent;
         this.user = user;
+        locationToSQL = ewent.Location;
 
         Name.Text = ewent.Name;
         Date.Date = ewent.Date;
@@ -81,34 +83,41 @@ public partial class EventManager : ContentPage
             IsPrivate = false;
         }
     }
-    private void OnSaveClicked(object sender, EventArgs e)
+    private async void OnSaveClicked(object sender, EventArgs e)
+    {
+        if (Name?.Text?.Length < 3 || Description?.Text?.Length < 3|| locationToSQL==null) await DisplayAlert("Error", "Fill all fields!", "OK");
+        else
+        {
+            //З'єднання з базою даних
+            MySqlConnection connection = CustomSQL.Connection();
+            MySqlCommand command = new MySqlCommand($"SELECT * FROM Events WHERE Name=@Name AND Location=@Location AND Email=@Email", connection);
+            command.Parameters.AddWithValue("@Name", ewent.Name);
+            command.Parameters.AddWithValue("@Location", ewent.Location);
+            command.Parameters.AddWithValue("@Email", ewent.Email);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read()) // перевіряємо, чи є результати запиту
+            {
+                reader.Close();
+                MySqlCommand updateCommand = new MySqlCommand($"UPDATE Events SET Name=@Name, Date=@Date, Location=@Location, Description=@Description, IsPrivate=@IsPrivate", connection);
+                updateCommand.Parameters.AddWithValue("@Name", Name.Text);
+                updateCommand.Parameters.AddWithValue("@Date", Date.Date);
+                updateCommand.Parameters.AddWithValue("@Location", locationToSQL);
+                updateCommand.Parameters.AddWithValue("@Description", Description.Text);
+                updateCommand.Parameters.AddWithValue("@IsPrivate", IsPrivate);
+
+                updateCommand.ExecuteNonQuery();
+
+            }
+        }
+        
+    }
+    private async void OnDeleteClicked(object sender, EventArgs e)
     {
         //З'єднання з базою даних
-        string Conn = "Server=sql7.freemysqlhosting.net;Port=3306;Database=sql7611982;Uid=sql7611982;Pwd=Aegl446cFD;";
-        MySqlConnection connection = new MySqlConnection(Conn);
-        if (connection.State == System.Data.ConnectionState.Closed)
-        {
-            connection.Open();
-        }
-        MySqlCommand command = new MySqlCommand($"SELECT * FROM Events WHERE Name=@Name AND Location=@Location AND Email=@Email", connection);
-        command.Parameters.AddWithValue("@Name", ewent.Name);
-        command.Parameters.AddWithValue("@Location", ewent.Location);
-        command.Parameters.AddWithValue("@Email", ewent.Email);
-        MySqlDataReader reader = command.ExecuteReader();
-
-        if (reader.Read()) // перевіряємо, чи є результати запиту
-        {
-            reader.Close();
-            MySqlCommand updateCommand = new MySqlCommand($"UPDATE Events SET Name=@Name, Date=@Date, Location=@Location, Description=@Description, IsPrivate=@IsPrivate WHERE Email=@Email", connection);
-            updateCommand.Parameters.AddWithValue("@Name", ewent.Name);
-            updateCommand.Parameters.AddWithValue("@Date", ewent.Date);
-            updateCommand.Parameters.AddWithValue("@Location", ewent.Location);
-            updateCommand.Parameters.AddWithValue("@Description", ewent.Description);
-            updateCommand.Parameters.AddWithValue("@IsPrivate", ewent.IsPrivate);
-            updateCommand.Parameters.AddWithValue("@Email", ewent.Email);
-
-            updateCommand.ExecuteNonQuery();
-
-        }
+        MySqlConnection connection = CustomSQL.Connection();
+        MySqlCommand command = new MySqlCommand($"DELETE FROM Events WHERE Id = {ewent.Id}", connection);
+        command.ExecuteReader();
+        await Navigation.PopModalAsync();
     }
 }

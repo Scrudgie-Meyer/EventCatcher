@@ -1,52 +1,135 @@
-﻿using NewEvent.Support;
+﻿using MySql.Data.MySqlClient;
+using NewEvent.Support;
 using Newtonsoft.Json;
 
 namespace NewEvent
 {
     public partial class MainPage : ContentPage
     {
-
+        private User user =new User();
+        private List<Event> eventList = new List<Event>();
         public MainPage()
         {
             InitializeComponent();
-            string events = Preferences.Get("Events", null);
-            List<Event> eventList = JsonConvert.DeserializeObject<List<Event>>(events);
+
+            // Вивантажуємо нинішнього користувача та івенти
+            string userJson = Preferences.Get("CurrentUser", null);
+            user = JsonConvert.DeserializeObject<User>(userJson);
+            eventList = CustomSQL.GetEvents(CustomSQL.Connection());
 
             var label = new Label()
             {
-                Text = "Popular public events",
+                Text = "Public events",
+                FontAttributes = FontAttributes.Bold,
                 FontSize = 20,
-                TextColor = Color.FromArgb("#FFFFFF"),
-                Margin = new Thickness(0, 20, 0, 0)
+                TextColor = Color.FromArgb("#000000"),
+                Margin = new Thickness(20, 20, 0, 0)
             };
-            var stackLayout = new StackLayout();
-            stackLayout.Children.Add(label);
+
+            var eventsStackLayout = new StackLayout();
             foreach (var eventItem in eventList)
             {
-                if(eventItem.IsPrivate==false)
+                if (!eventItem.IsPrivate)
                 {
                     var button = new Button()
                     {
                         Text = eventItem.Name,
                         TextColor = Color.FromArgb("#FFFFFF"),
-                        BackgroundColor = Color.FromArgb("#023402"),
-                        Margin = new Thickness(0, 5, 0, 0)
+                        BackgroundColor = Color.FromArgb("#FF05A27F"),
+                        Margin = new Thickness(20, 5, 20, 0)
                     };
 
-                    // додаємо обробник події для кнопки
-                    button.Clicked += (sender, e) => 
+                    // Додаємо обробник події для кнопки
+                    button.Clicked += (sender, e) =>
                     {
                         Navigation.PushModalAsync(new EventView(eventItem));
                     };
 
-                    // додаємо кнопку до кореневого макету
-                    stackLayout.Children.Add(button);
+                    // Додаємо кнопку до стекового макету
+                    eventsStackLayout.Children.Add(button);
                 }
-                
             }
-            Content = stackLayout;
+
+            var scrollView = new ScrollView()
+            {
+                Content = new StackLayout()
+                {
+                    Children =
+                    {
+                        label,
+                        eventsStackLayout
+                    }
+                },
+                BackgroundColor = Color.FromArgb("#E0FFFF")
+            };
+            var refreshView = new RefreshView
+            {
+                Content = scrollView,
+                Command = new Command(RefreshData),
+                RefreshColor = Color.FromArgb("#FF05A27F")
+            };
+            Content = refreshView;
         }
-        
+        private void RefreshData()
+        {
+            // Вивантажуємо нинішнього користувача та івенти
+            string userJson = Preferences.Get("CurrentUser", null);
+            user = JsonConvert.DeserializeObject<User>(userJson);
+            eventList = CustomSQL.GetEvents(CustomSQL.Connection());
+
+            var label = new Label()
+            {
+                Text = "Public events",
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20,
+                TextColor = Color.FromArgb("#000000"),
+                Margin = new Thickness(20, 20, 0, 0)
+            };
+
+            var eventsStackLayout = new StackLayout();
+            foreach (var eventItem in eventList)
+            {
+                if (!eventItem.IsPrivate)
+                {
+                    var button = new Button()
+                    {
+                        Text = eventItem.Name,
+                        TextColor = Color.FromArgb("#FFFFFF"),
+                        BackgroundColor = Color.FromArgb("#FF05A27F"),
+                        Margin = new Thickness(20, 5, 20, 0)
+                    };
+
+                    // Додаємо обробник події для кнопки
+                    button.Clicked += (sender, e) =>
+                    {
+                        Navigation.PushModalAsync(new EventView(eventItem));
+                    };
+
+                    // Додаємо кнопку до стекового макету
+                    eventsStackLayout.Children.Add(button);
+                }
+            }
+
+            var scrollView = new ScrollView()
+            {
+                Content = new StackLayout()
+                {
+                    Children =
+                    {
+                        label,
+                        eventsStackLayout
+                    }
+                },
+                BackgroundColor = Color.FromArgb("#E0FFFF")
+            };
+            var refreshView = new RefreshView
+            {
+                Content = scrollView,
+                Command = new Command(RefreshData),
+                RefreshColor = Color.FromArgb("#FF05A27F")
+            };
+            Content = refreshView;
+        }
 
 
     }

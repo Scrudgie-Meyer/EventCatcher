@@ -19,7 +19,8 @@ public partial class JoinEvent : ContentPage
         {
             if (Pass.Text == ev.UniqueCode) { ewent = ev; }
         }
-        if (ewent == null) { await DisplayAlert("Помилка", "Івент не знайдено!", "OK"); }
-        await Navigation.PushModalAsync(new EventView(ewent));
+        if (ewent == null) { await DisplayAlert("Error", "Event not found!", "OK"); }
+
+        else await Navigation.PushModalAsync(new EventView(ewent));
     }
 }

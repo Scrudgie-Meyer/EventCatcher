@@ -3,17 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewEvent.Settings"
              Title="Settings"
-             BackgroundColor="Black">
+             BackgroundColor="LightCyan">
     <StackLayout VerticalOptions="StartAndExpand" Margin="20">
-        <Button Text="Return" TextColor="White" Clicked="OnReturnClicked" BackgroundColor="#023402" CornerRadius="8" />
-        <Label  Text="Change nickname"  TextColor="White" FontSize="Large" Margin="0, 10, 0, 0" />
-        <Entry x:Name="ChangeNickname" TextColor="White" BackgroundColor="#FF025C48" FontSize="Large" Margin="0, 10, 0, 0" />
+        <Button Text="Return" TextColor="White" Clicked="OnReturnClicked" BackgroundColor="#FF05A27F" CornerRadius="8" />
+        <Entry x:Name="ChangeNickname" TextColor="White" BackgroundColor="#FF05A27F" FontSize="Large" Margin="0, 30, 0, 0" Placeholder="Change nickname" PlaceholderColor="LightGray"/>
 
-        <Label  Text="Set new password"  TextColor="White" FontSize="Large" Margin="0, 20, 0, 0" />
-        <Label  Text="Old password"  TextColor="White" FontSize="Large" Margin="0, 10, 0, 0" />
-        <Entry x:Name="OldPassword" TextColor="White" IsPassword="True" BackgroundColor="#FF025C48" FontSize="Large" Margin="0, 10, 0, 0" />
-        <Label  Text="New password"  TextColor="White" FontSize="Large" Margin="0, 10, 0, 0" />
-        <Entry x:Name="NewPassword" TextColor="White" IsPassword="True" BackgroundColor="#FF025C48" FontSize="Large" Margin="0, 10, 0, 0" />
-        <Button Text="Save changes" TextColor="White" Clicked="OnSaveClicked" BackgroundColor="#023402" CornerRadius="8" FontSize="Large" Margin="0, 30, 0, 0" />
+        <Label  Text="Set new password"  TextColor="Black" FontSize="Large" Margin="0, 20, 0, 0" />
+        <Entry x:Name="OldPassword" TextColor="White" IsPassword="True" BackgroundColor="#FF05A27F" FontSize="Large" Margin="0, 10, 0, 0" Placeholder="Old password" PlaceholderColor="LightGray"/>
+        <Entry x:Name="NewPassword" TextColor="White" IsPassword="True" BackgroundColor="#FF05A27F" FontSize="Large" Margin="0, 30, 0, 0" Placeholder="New password" PlaceholderColor="LightGray"/>
+        <Button Text="Save changes" TextColor="White" Clicked="OnSaveClicked" BackgroundColor="#FF05A27F" CornerRadius="8" FontSize="Large" Margin="0, 30, 0, 0" />
     </StackLayout>
 </ContentPage>
