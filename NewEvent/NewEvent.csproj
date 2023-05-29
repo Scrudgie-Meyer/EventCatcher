@@ -64,28 +64,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="EventCreator.xaml">
+	  <MauiXaml Update="!View\EventCreator.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="EventManager.xaml">
+	  <MauiXaml Update="!View\EventManager.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="EventView.xaml">
+	  <MauiXaml Update="!View\EventView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="JoinEvent.xaml">
+	  <MauiXaml Update="!View\JoinEvent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Login.xaml">
+	  <MauiXaml Update="!View\Login.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Profile.xaml">
+	  <MauiXaml Update="!View\Profile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Registration.xaml">
+	  <MauiXaml Update="!View\Registration.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Settings.xaml">
+	  <MauiXaml Update="!View\Settings.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
